@@ -1,0 +1,33 @@
+/**
+ * Shared file between builds so that they can all use the same dependencies and maven repositories.
+ *
+ **/
+
+/////////////////////////////////////// versions start
+def versions = [:]
+// Top level in build.gradle
+versions.android_gradle_plugin = '7.4.2'
+versions.kotlin_version = '1.9.20'
+ext.versions = versions
+
+def build_versions = [:]
+build_versions.min_sdk = 21
+build_versions.compile_sdk = 34
+build_versions.target_sdk = 34
+build_versions.build_tools = "34.0.0"
+build_versions.java_source = JavaVersion.VERSION_11
+build_versions.java_target = JavaVersion.VERSION_11
+ext.build_versions = build_versions
+
+/////////////////////////////////////// versions end
+
+/////////////////////////////////////// deps start
+def deps = [:]
+
+def plugin = [:]
+plugin.android_gradle = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+plugin.kotlin_gradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin_version"
+deps.plugin = plugin
+
+ext.deps = deps
+/////////////////////////////////////// deps end
