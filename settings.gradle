@@ -1,12 +1,6 @@
+rootProject.name = "Robust"
+
 include ':app'
 include ':patch'
-include ':autopatchbase'
 
-/* ----> 发布插件时打开 <---- */
-//include ':gradle-plugin'
-//include ':auto-patch-plugin'
-
-/* ----> 调试插件时打开 <---- */
-//includeBuild ':gradle-plugin'
-//includeBuild ':auto-patch-plugin'
-
+includeBuild 'plugins'

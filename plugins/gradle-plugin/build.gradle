@@ -1,0 +1,28 @@
+apply plugin: 'java-gradle-plugin'
+apply plugin: 'groovy'
+
+compileGroovy {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
+dependencies {
+
+    implementation project(path: ':autopatchbase')
+
+    implementation gradleApi()
+    implementation localGroovy()
+    implementation deps.plugin.android_gradle
+
+    // ASM（字节码操作框架）
+    implementation deps.bytecode.asm
+    implementation deps.bytecode.asm_util
+    implementation deps.bytecode.asm_commons
+
+    // Javassist（字节码操作框架，性能没有ASM好但容易上手）
+    implementation deps.bytecode.javassist
+
+    implementation 'commons-io:commons-io:2.18.0'
+    implementation 'com.android.tools:common:25.1.2'
+
+}

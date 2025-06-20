@@ -1,0 +1,3 @@
+apply plugin: 'java'
+sourceCompatibility = build_versions.java_source
+targetCompatibility = build_versions.java_target

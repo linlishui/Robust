@@ -1,7 +1,0 @@
-apply plugin: 'java'
-//apply from: '../gradle_mvn_push.gradle'
-
-java {
-    sourceCompatibility build_versions.java_source
-    targetCompatibility build_versions.java_target
-}

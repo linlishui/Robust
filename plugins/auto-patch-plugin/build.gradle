@@ -1,0 +1,20 @@
+apply plugin: 'java-gradle-plugin'
+apply plugin: 'groovy'
+
+compileGroovy {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
+dependencies {
+    implementation project(path: ':autopatchbase')
+
+    implementation gradleApi()
+    implementation localGroovy()
+
+    implementation deps.plugin.android_gradle
+    implementation deps.bytecode.javassist
+
+    implementation 'commons-io:commons-io:2.18.0'
+    implementation 'com.android.tools:common:25.1.2'
+}

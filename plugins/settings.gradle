@@ -1,0 +1,6 @@
+rootProject.name = 'robust-plugins'
+
+include ':gradle-plugin'
+include ':auto-patch-plugin'
+
+include ':autopatchbase'

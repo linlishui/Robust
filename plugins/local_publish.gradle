@@ -1,0 +1,42 @@
+apply plugin: 'maven-publish'
+
+afterEvaluate {
+    if (project == rootProject) {
+        return
+    }
+    def customArtifactId = project.archivesBaseName
+    if (customArtifactId == null) {
+        customArtifactId = project.name.toLowerCase()
+    }
+    group = "com.meituan.robust"
+    version = "0.4.99"
+
+    if (!project.pluginManager.hasPlugin("java")) {
+        return
+    }
+    publishing {
+        publications {
+            local(MavenPublication) {
+                artifactId = customArtifactId
+                version = project.version
+                from components.java
+            }
+        }
+        repositories {
+            mavenLocal {
+                url = new File(rootProject.rootDir.parent, 'repo')
+            }
+        }
+    }
+
+    java {
+        withJavadocJar()
+        withSourcesJar()
+    }
+
+    javadoc {
+        options.encoding = "UTF-8"
+        options.addStringOption('Xdoclint:none', '-quiet')
+    }
+}
+

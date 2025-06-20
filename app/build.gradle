@@ -69,7 +69,8 @@ configurations.all {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':patch')
-    implementation project(path: ':autopatchbase')
+
+    implementation deps.robust.autopatchbase
 
     implementation 'androidx.appcompat:appcompat:1.6.0'
     implementation 'com.google.android.material:material:1.4.0'

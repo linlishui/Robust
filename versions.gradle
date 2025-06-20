@@ -8,6 +8,9 @@ def versions = [:]
 // Top level in build.gradle
 versions.android_gradle_plugin = '7.4.2'
 versions.kotlin_version = '1.9.20'
+versions.robust = '0.4.99'
+versions.asm = '9.2'
+versions.javassist = '3.30.2-GA'
 ext.versions = versions
 
 def build_versions = [:]
@@ -28,6 +31,19 @@ def plugin = [:]
 plugin.android_gradle = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
 plugin.kotlin_gradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin_version"
 deps.plugin = plugin
+
+def robust = [:]
+robust.autopatchbase = "com.meituan.robust:autopatchbase:$versions.robust"
+robust.gradle_plugin = "com.meituan.robust:gradle-plugin:$versions.robust"
+robust.auto_patch_plugin = "com.meituan.robust:auto-patch-plugin:$versions.robust"
+deps.robust = robust
+
+def bytecode = [:]
+bytecode.asm = "org.ow2.asm:asm:$versions.asm"
+bytecode.asm_util = "org.ow2.asm:asm-util:$versions.asm"
+bytecode.asm_commons = "org.ow2.asm:asm-commons:$versions.asm"
+bytecode.javassist = "org.javassist:javassist:$versions.javassist"
+deps.bytecode = bytecode
 
 ext.deps = deps
 /////////////////////////////////////// deps end

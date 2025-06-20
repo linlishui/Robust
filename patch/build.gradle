@@ -36,7 +36,5 @@ configurations.all {
     resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
 }
 dependencies {
-    implementation project(':autopatchbase')
+    implementation deps.robust.autopatchbase
 }
-
-//apply from: '../gradle_mvn_push.gradle'
