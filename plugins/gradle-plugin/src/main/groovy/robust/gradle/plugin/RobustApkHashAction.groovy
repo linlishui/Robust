@@ -4,6 +4,7 @@ import com.meituan.robust.Constants
 import org.apache.commons.io.IOUtils
 import org.gradle.api.Action
 import org.gradle.api.Project
+import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.file.FileCollection
 
 import java.security.MessageDigest
@@ -33,7 +34,12 @@ class RobustApkHashAction implements Action<Project> {
 
                     //protected FileCollection resourceFiles;
                     FileCollection resourceFiles
-                    if (isGradlePlugin320orAbove(project)) {
+                    if (isGradlePlugin500orAbove(project)) {
+                        DirectoryProperty resFiles = packageTask.resourceFiles
+                        for (File file : resFiles.getAsFileTree().getFiles()){
+                            partFiles.add(file)
+                        }
+                    } else if (isGradlePlugin320orAbove(project)) {
                         try {
                             //gradle 4.6 适配
                             resourceFiles = packageTask.resourceFiles.get()
@@ -293,6 +299,11 @@ class RobustApkHashAction implements Action<Project> {
         //gradlePlugin3.2.0 -> gradle 4.6+
         //see https://developer.android.com/studio/releases/gradle-plugin
         return compare(project.getGradle().gradleVersion, "4.6") >= 0
+    }
+
+    static boolean isGradlePlugin500orAbove(Project project) {
+        //gradlePlugin5.0+
+        return compare(project.getGradle().gradleVersion, "5.0") >= 0
     }
 
     /**
