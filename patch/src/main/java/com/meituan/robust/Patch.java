@@ -103,6 +103,7 @@ public class Patch implements Cloneable {
     public void setAppHash(String appHash) {
         this.appHash = appHash;
     }
+
     //解密之后的补丁文件，可以直接运行的补丁文件，建议加载之后立刻删除，保证安全性
     public String getTempPath() {
         return tempPath + "_temp" + ".jar";

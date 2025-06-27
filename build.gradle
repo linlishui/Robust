@@ -5,7 +5,7 @@ buildscript {
     apply from: './versions.gradle'
 
     repositories {
-        maven { url new File(rootProject.projectDir, 'repo') }
+        maven { url new File(rootProject.projectDir, '.repo') }
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
@@ -26,7 +26,7 @@ configurations.configureEach {
 
 allprojects {
     repositories {
-        maven { url new File(rootProject.projectDir, 'repo') }
+        maven { url new File(rootProject.projectDir, '.repo') }
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }

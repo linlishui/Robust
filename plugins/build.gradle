@@ -19,3 +19,30 @@ allprojects {
 
     apply from: "$rootDir/local_publish.gradle"
 }
+
+// 批量发布所有子项目到本地仓库
+tasks.register('publishAllToLocal') {
+    group = 'publishing'
+    description = '发布所有子项目到本地Maven仓库'
+
+    doLast {
+        println "开始批量发布所有子项目..."
+    }
+}
+
+// 为每个子项目配置发布任务依赖
+subprojects { subproject ->
+    afterEvaluate {
+        // 检查子项目是否有发布配置
+        if (subproject.pluginManager.hasPlugin('maven-publish') && subproject.pluginManager.hasPlugin('java')) {
+
+            subproject.tasks.matching { it.name == 'publishToMavenLocal' }.all { publishTask ->
+                publishAllToLocal.dependsOn publishTask
+            }
+
+            subproject.tasks.matching { it.name == 'publishLocalPublicationToMavenLocalRepository' }.all { publishTask ->
+                publishAllToLocal.dependsOn publishTask
+            }
+        }
+    }
+}

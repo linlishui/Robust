@@ -24,7 +24,7 @@ afterEvaluate {
         }
         repositories {
             mavenLocal {
-                url = new File(rootProject.rootDir.parent, 'repo')
+                url = new File(rootProject.rootDir.parent, '.repo')
             }
         }
     }

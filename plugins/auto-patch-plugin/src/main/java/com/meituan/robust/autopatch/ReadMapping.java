@@ -36,8 +36,6 @@ public class ReadMapping {
 
     /***
      * read all class mapping info
-     *
-     * @return
      */
     public void initMappingInfo() {
         //查找mapping文件
@@ -66,6 +64,11 @@ public class ReadMapping {
                     line = reader.readLine();
                     while (line != null) {
                         line = line.trim();
+                        // 跳过高版本的R8注释
+                        if (line.startsWith("#")) {
+                            line = reader.readLine();
+                            continue;
+                        }
                         if (line.endsWith(":")) {
                             needBacktrace = true;
                             break;
