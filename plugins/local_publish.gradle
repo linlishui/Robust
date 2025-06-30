@@ -8,8 +8,8 @@ afterEvaluate {
     if (customArtifactId == null) {
         customArtifactId = project.name.toLowerCase()
     }
-    group = "com.meituan.robust"
-    version = "0.4.99"
+    group = "cn.lsfun.android.robust"
+    version = "0.4.99.1"
 
     if (!project.pluginManager.hasPlugin("java")) {
         return

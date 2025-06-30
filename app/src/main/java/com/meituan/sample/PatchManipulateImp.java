@@ -1,7 +1,6 @@
 package com.meituan.sample;
 
 import android.content.Context;
-import android.os.Environment;
 import android.util.Log;
 
 import com.meituan.robust.Patch;

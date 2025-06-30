@@ -1,0 +1,25 @@
+apply plugin: 'java-gradle-plugin'
+apply plugin: 'groovy'
+
+compileGroovy {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
+dependencies {
+    implementation gradleApi()
+//    implementation localGroovy()
+
+    implementation project(":gradle-plugin")
+    implementation project(":auto-patch-plugin")
+}
+
+
+gradlePlugin {
+    plugins {
+        "AutoRobust" {
+            id = "auto-robust"
+            implementationClass = "cn.lsfun.android.robust.AutoRobustPlugin"
+        }
+    }
+}

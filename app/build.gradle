@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
+apply plugin: 'auto-robust'
 //apply plugin: 'auto-patch-plugin'
-apply plugin: 'robust'
+//apply plugin: 'robust'
 
 android {
 
@@ -62,7 +63,7 @@ configurations {
     all*.exclude group: 'com.google.guava', module: 'guava'
 }
 
-configurations.all {
+configurations.configureEach {
     resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
 }
 
